@@ -1,0 +1,20 @@
+version: "3.11"
+
+services:
+  app:
+    build:
+      context: .
+      args:
+        - DEV=true
+    ports:
+      - "8001:8001"
+    volumes:
+     - ./app:/app
+    command: >
+      sh -c "python manage.py runserver 0.0.0.0:8001"
+    environment:
+      - DEV=true  
+
+networks:
+  default:
+    driver: bridge
